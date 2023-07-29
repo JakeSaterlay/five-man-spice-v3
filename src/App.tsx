@@ -1,25 +1,50 @@
 import { useState } from "react";
 import "./App.css";
 import { roleList, championList } from "./constants";
+import PlayerForm from "./components/PlayerForm";
+import ChampionGrid from "./components/ChampionGrid";
+
+export interface Player {
+  name: string;
+  role: string;
+  champion: string;
+}
 
 function App() {
-	const [roles, setRoles] = useState<string[]>(roleList);
-	const [champions, setChampions] = useState<string[]>(championList);
+  const [roles, setRoles] = useState<string[]>(roleList);
+  const [champions, setChampions] = useState<string[]>(championList);
+  const [players, setPlayers] = useState<Player[]>([]);
 
-	const getRandomChamp = (): string => {
-		const randomChampion =
-			champions[Math.floor(Math.random() * champions.length)];
+  const getRandomChamp = (): string => {
+    const randomChampion =
+      champions[Math.floor(Math.random() * champions.length)];
 
-		setChampions(champions.filter((x) => x !== randomChampion));
-		console.log("Random champion", randomChampion);
-		return randomChampion;
-	};
+    setChampions(champions.filter((x) => x !== randomChampion));
+    return randomChampion;
+  };
 
-	return (
-		<>
-			<button onClick={getRandomChamp}>Random Champion</button>
-		</>
-	);
+  const getRandomRole = (): string => {
+    const randomRole = roles[Math.floor(Math.random() * roles.length)];
+
+    setRoles(roles.filter((x) => x !== randomRole));
+    return randomRole;
+  };
+
+  const handlePlayerSubmit = (playerName: string) => {
+    const newPlayer: Player = {
+      name: playerName,
+      champion: getRandomChamp(),
+      role: getRandomRole(),
+    };
+    setPlayers([...players, newPlayer]);
+  };
+
+  return (
+    <>
+      <PlayerForm onPlayerSubmit={handlePlayerSubmit} />
+      <ChampionGrid players={players} />
+    </>
+  );
 }
 
 export default App;
