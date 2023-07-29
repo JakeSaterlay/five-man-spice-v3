@@ -1,4 +1,4 @@
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useState } from "react";
 
 interface Props {
   onPlayerSubmit: (playerName: string) => void;
