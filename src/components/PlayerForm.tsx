@@ -9,6 +9,7 @@ function PlayerForm({ onPlayerSubmit }: Props) {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    setName("");
     onPlayerSubmit(name);
   };
 
