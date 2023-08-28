@@ -39,9 +39,16 @@ function App() {
     setPlayers([...players, newPlayer]);
   };
 
+  const handleReset = () => {
+    setRoles(roleList);
+    setChampions(championList);
+    setPlayers([]);
+  };
+
   return (
     <>
-      <PlayerForm onPlayerSubmit={handlePlayerSubmit} />
+      {players.length < 5 && <PlayerForm onPlayerSubmit={handlePlayerSubmit} />}
+      {players.length >= 1 && <button onClick={handleReset}>Reset</button>}
       <ChampionGrid players={players} />
     </>
   );
