@@ -10,10 +10,13 @@ function ChampionCard({ player }: Props) {
     <div className={styles.container}>
       <img
         src={`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${player.champion}_0.jpg`}
-        height={"100%"}
-        width={"100%"}
       />
-      Hello {player.name} you are {player.champion} {player.role}
+      <div className={styles.playerInfo}>
+        <p>{player.name}</p>
+        <p>{player.champion}</p>
+        <p>{player.role}</p>
+        <button>Reroll</button>
+      </div>
     </div>
   );
 }

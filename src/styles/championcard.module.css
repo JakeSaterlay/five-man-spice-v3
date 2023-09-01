@@ -1,13 +1,22 @@
 .container {
   padding: 10px;
-  background-color: #fff;
+  background-color: #e6e5e3;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  height: 210px;
+  height: 250px;
   width: 300px;
+  display: flex;
+  flex-direction: column;
 }
 
 .container:hover {
   transition: all 0.2s ease-in-out;
   transform: scale(1.1);
+}
+
+.playerInfo {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import { roleList } from "./constants";
+import { roleList } from "./data/constants";
 import PlayerForm from "./components/PlayerForm";
 import ChampionGrid from "./components/ChampionGrid";
 import { getChampions } from "./data/utils/championUtils";
@@ -47,11 +47,11 @@ function App() {
   };
 
   return (
-    <>
+    <div>
       {players.length < 5 && <PlayerForm onPlayerSubmit={handlePlayerSubmit} />}
       {players.length >= 1 && <button onClick={handleReset}>Reset</button>}
       <ChampionGrid players={players} />
-    </>
+    </div>
   );
 }
 
