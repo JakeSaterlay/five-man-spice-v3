@@ -1,8 +1,9 @@
 import { useState } from "react";
 import "./App.css";
-import { roleList, championList } from "./constants";
+import { roleList } from "./constants";
 import PlayerForm from "./components/PlayerForm";
 import ChampionGrid from "./components/ChampionGrid";
+import { getChampions } from "./data/utils/championUtils";
 
 export interface Player {
   name: string;
@@ -12,9 +13,9 @@ export interface Player {
 
 function App() {
   const [roles, setRoles] = useState<string[]>(roleList);
-  const [champions, setChampions] = useState<string[]>(championList);
+  const [champions, setChampions] = useState<string[]>(getChampions());
   const [players, setPlayers] = useState<Player[]>([]);
-
+  console.log(champions);
   const getRandomChamp = (): string => {
     const randomChampion =
       champions[Math.floor(Math.random() * champions.length)];
@@ -41,7 +42,7 @@ function App() {
 
   const handleReset = () => {
     setRoles(roleList);
-    setChampions(championList);
+    setChampions(getChampions());
     setPlayers([]);
   };
 
