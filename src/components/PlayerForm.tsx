@@ -15,7 +15,11 @@ function PlayerForm({ onPlayerSubmit }: Props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input onChange={(e) => setName(e.target.value)} value={name} />
+      <input
+        type="text"
+        onChange={(e) => setName(e.target.value)}
+        value={name}
+      />
       <button type="submit">Submit</button>
     </form>
   );

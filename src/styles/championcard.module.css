@@ -1,6 +1,6 @@
 .container {
   padding: 10px;
-  background-color: #e6e5e3;
+  background-color: #3b4b63;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   height: 250px;
@@ -17,6 +17,8 @@
 .playerInfo {
   padding: 20px;
   display: flex;
+  color: white;
   justify-content: space-between;
+  align-items: center;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
