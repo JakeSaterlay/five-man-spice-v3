@@ -4,8 +4,10 @@ import { roleList } from "./data/constants";
 import PlayerForm from "./components/PlayerForm";
 import ChampionGrid from "./components/ChampionGrid";
 import { getChampions } from "./data/utils/championUtils";
+import { v4 as uuidv4 } from "uuid";
 
 export interface Player {
+  id: string;
   name: string;
   role: string;
   champion: string;
@@ -33,6 +35,7 @@ function App() {
 
   const handlePlayerSubmit = (playerName: string) => {
     const newPlayer: Player = {
+      id: uuidv4(),
       name: playerName,
       champion: getRandomChamp(),
       role: getRandomRole(),
@@ -46,11 +49,23 @@ function App() {
     setPlayers([]);
   };
 
+  const handleReroll = (playerId: string) => {
+    setPlayers(
+      players.map((player) => {
+        if (player.id === playerId) {
+          return { ...player, champion: getRandomChamp() };
+        } else {
+          return player;
+        }
+      })
+    );
+  };
+
   return (
     <div>
       {players.length < 5 && <PlayerForm onPlayerSubmit={handlePlayerSubmit} />}
       {players.length >= 1 && <button onClick={handleReset}>Reset</button>}
-      <ChampionGrid players={players} />
+      <ChampionGrid players={players} onReroll={handleReroll} />
     </div>
   );
 }

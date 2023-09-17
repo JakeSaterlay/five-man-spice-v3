@@ -3,9 +3,10 @@ import styles from "../styles/championcard.module.css";
 
 interface Props {
   player: Player;
+  onReroll: (playerId: string) => void;
 }
 
-function ChampionCard({ player }: Props) {
+function ChampionCard({ player, onReroll }: Props) {
   return (
     <div className={styles.container}>
       <img
@@ -15,7 +16,7 @@ function ChampionCard({ player }: Props) {
         <p>{player.name}</p>
         <p>{player.champion}</p>
         <p>{player.role}</p>
-        <button>Reroll</button>
+        <button onClick={() => onReroll(player.id)}>Reroll</button>
       </div>
     </div>
   );
