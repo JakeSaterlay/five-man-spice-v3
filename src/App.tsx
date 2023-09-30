@@ -62,9 +62,16 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="p-5">
       {players.length < 5 && <PlayerForm onPlayerSubmit={handlePlayerSubmit} />}
-      {players.length >= 1 && <button onClick={handleReset}>Reset</button>}
+      {players.length >= 1 && (
+        <button
+          className="bg-purple-400 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
+          onClick={handleReset}
+        >
+          Reset
+        </button>
+      )}
       <ChampionGrid players={players} onReroll={handleReroll} />
     </div>
   );
